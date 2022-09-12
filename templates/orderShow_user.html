@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %} {% endblock %}
+
+
+ {% block stylesheet %}
+ {% endblock %}
+
+
+ {% block header %}
+ {% include 'header.html' %}
+ {% endblock %}
+
+
+
+{% block slider %}
+
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+
+{% block main_Containt %}
+
+<div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li class="active">order</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!--Wishlist Area Strat-->
+            <div class="wishlist-area pt-60 pb-60">
+                <div class="container">
+                    <div class="row">
+                     <div class="col-md-3">
+                       <h1  class="font-weight-bold my-3" > User panel </h1>
+                        {% include 'user_panel.html' %}
+
+                     </div>
+                        <div class="col-md-9">
+                              <div class="row">
+                                <div class="col-md-12">
+                                    <h1 class="font-weight-bold  text-center my-2"> Hello {{ user.username }}</h1>
+                                </div>
+                            </div>
+                            <form action="#">
+                                <div class="table-content table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="li-product-thumbnail">Date</th>
+                                                <th class="cart-product-name"> Order Price </th>
+                                                <th class="li-product-price"> Order status </th>
+                                                <th class="li-product-price"> Admin note </th>
+                                                <th class="li-product-add-cart"> Action </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                             {% for p in your_order %}
+                                              <tr>
+                                                <td class="li-product-name"><a href="#"> {{ p.created_at }}</a></td>
+                                                <td class="li-product-price"><span class="amount">Tk {{ p.total }}</span></td>
+                                                <td class="li-product-price"><span class="amount"> {{ p.status }}</span></td>
+                                                <td class="li-product-price"><span class="amount"> {{ p.admin_note }}</span></td>
+                                                <td class="li-product-add-cart"><a href="{% url 'order_Details_Show' id=p.id %}"> Details </a></td>
+                                                </tr>
+                                             {% endfor %}
+
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Wishlist Area End-->
+
+{% endblock %}
+
+
+{% block footer %}
+{% include 'footer.html' %}
+
+{% endblock %}
+
+
+
+
+{% block script %}
+{% endblock %}

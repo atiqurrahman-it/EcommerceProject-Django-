@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>student info </title>
+</head>
+<body>
+ <h2> add informanion </h2>
+
+{% for p in all_information %}
+  <hr>
+ Emplyee_id:{{ p.employee.id }} <br>
+ Emplyee_Name:{{ p.employee.emp_name }} <br>
+ Emply_phone : {{ p.employee.phone }} <br>
+ Salary : {{p.amount}} <br>
+
+ <hr>
+{% endfor%}
+
+ <h1> Address </h1>
+ <br> <hr>
+{% for p in Address %}
+ {{ p.Thana_name }} <br>
+{% endfor %}
+
+
+</body>
+</html>

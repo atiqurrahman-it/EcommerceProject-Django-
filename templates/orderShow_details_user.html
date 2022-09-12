@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block title %} {% endblock %}
+
+
+ {% block stylesheet %}
+ {% endblock %}
+
+
+ {% block header %}
+ {% include 'header.html' %}
+ {% endblock %}
+
+
+
+{% block slider %}
+
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+
+{% block main_Containt %}
+
+<div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li class="active">order Details </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!--Wishlist Area Strat-->
+            <div class="wishlist-area pt-60 pb-60">
+                <div class="container">
+                    <div class="row">
+                      <div class="col-md-3">
+                       <h1  class="font-weight-bold my-3" > User panel </h1>
+                        {% include 'user_panel.html' %}
+
+                     </div>
+                        <div class="col-sm-12 col-md-12 col-lg-9 col-xs-12">
+                            <table class="shopping-card-table table" >
+                            <tr>
+                                <th> Full Name </th>
+                                <td> {{ order.user.first_name }} {{ order.user.last_name }}</td>
+                            </tr>
+
+                               <tr>
+                                <th> phone </th>
+                                <td> {{ order.phone }} </td>
+                            </tr>
+                                <tr>
+                                <th> City </th>
+                                <td> {{ order.city }} </td>
+                            </tr>
+
+                                 <tr>
+                                <th> Country </th>
+                                <td> {{ order.country }} </td>
+                            </tr>
+
+                              <tr>
+                                <th> Status </th>
+                                <td> {{ order.status }} </td>
+                            </tr>
+
+                              <tr>
+                                <th> Address </th>
+                                <td> {{ order.address }} </td>
+                            </tr>
+
+                              <tr>
+                                <th> Date </th>
+                                <td> {{ order.created_at }} </td>
+                            </tr>
+
+                                <tr>
+                                <th>  admin_note  </th>
+                                <td> {{ order.admin_note}} </td>
+                            </tr>
+
+
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="li-product-thumbnail">Image</th>
+                                                <th class="cart-product-name"> Product title  </th>
+                                                <th class="cart-product-name">  Price </th>
+                                                <th class="cart-product-name">  Quantity </th>
+                                                <th class="li-product-price">  Total Amount </th>
+                                                 <th class="li-product-stock-status">Status</th>
+                                                <th class="li-product-add-cart"> Action </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                             {% for p in Products %}
+                                              <tr>
+                                                <td class="li-product-thumbnail"><a href="#"><img src="{{ p.product.image_url }}" style="width:100px; height:100px;" alt="imageNot"></a></td>
+                                                  <td class="li-product-name"><a href="#"> {{ p.product.title }} </a></td>
+                                                  <td class="li-product-price"><span class="amount">Tk {{ p.price }}</span></td>
+                                                  <td class="li-product-price"><span class="amount"> {{ p.quantity }}</span></td>
+                                                  <td class="li-product-price"><span class="amount"> Tk {{ p.amount }}</span></td>
+                                                  <td class="li-product-stock-status"><span class="in-stock">  {{ p.status }} </span></td>
+                                                <td class="li-product-add-cart"><a href="#"> Details </a></td>
+                                                </tr>
+                                             {% endfor %}
+
+
+
+                                        </tbody>
+                                    </table>
+
+                    </div>
+                </div>
+            </div>
+            <!--Wishlist Area End-->
+
+{% endblock %}
+
+
+{% block footer %}
+{% include 'footer.html' %}
+
+{% endblock %}
+
+
+
+
+{% block script %}
+{% endblock %}
